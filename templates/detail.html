@@ -3,9 +3,7 @@
 
 <main>
         <h1>{{ plant.name }}</h1>
-
-        <img class="detail" src={{ plant['photo_url'] }}>
-
+        <img class="detail" src={{ plant.photo_url }}>
         <section id="info">
             <h3>Info</h3>
 
@@ -40,7 +38,6 @@
 
         <section id="harvest-history">
             <h3>Harvest History</h3>
-
             <ul>
               {% for harvest in harvests %}
                 <li>{{harvest.date}}: {{harvest.quantity}}</li>

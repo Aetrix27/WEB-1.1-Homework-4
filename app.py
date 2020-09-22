@@ -96,23 +96,22 @@ def harvest(plant_id):
 def edit(plant_id):
     """Shows the edit page and accepts a POST request with edited data."""
     if request.method == 'POST':
-        plant=request.form.get('plant_name')
-        photo=request.form.get('photo')
-        date_planted=request.form.get('date_planted')
-        variety=request.form.get('variety')
+        plant = request.form.get('plant_name')
+        photo = request.form.get('photo')
+        date_planted = request.form.get('date_planted')
+        variety = request.form.get('variety')
 
         mongo.db.plants.update_one({
             '_id': ObjectId(plant_id)
-            },
-            {
-                '$set': { 
-                    '_id': ObjectId(plant_id),
-                    'plant_name' : plant,
-                    'date_planted' : date_planted,
-                    'variety' : variety,
-                    'photo_url' : photo
-
-                }
+        },
+        {
+            '$set': { 
+                '_id': ObjectId(plant_id),
+                'plant_name' : plant,
+                'date_planted' : date_planted,
+                'variety' : variety,
+                'photo_url' : photo
+            }
         })
         
         return redirect(url_for('detail', plant_id=plant_id))
