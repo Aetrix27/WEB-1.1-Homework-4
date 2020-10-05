@@ -1,6 +1,7 @@
 from flask import Flask, request, redirect, render_template, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+import os
 
 ############################################################
 # SETUP
@@ -8,7 +9,8 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
-app.config["MONGO_URI"] = "mongodb://localhost:27017/plantsDatabase"
+host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/plantprojectfirstdeployment') + "?retryWrites=false"
+app.config["MONGO_URI"] = host
 mongo = PyMongo(app)
 
 ############################################################
