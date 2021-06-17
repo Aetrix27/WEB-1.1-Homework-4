@@ -28,3 +28,5 @@ toml==0.10.1
 virtualenv==20.0.31
 Werkzeug==1.0.1
 wrapt==1.12.1
+python-dotenv
+dnspython
