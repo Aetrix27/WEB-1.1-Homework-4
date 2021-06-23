@@ -13,6 +13,7 @@ app = Flask(__name__)
 host = os.environ.get(
     'MONGODB_URI', 'mongodb+srv://David:david323@cluster0.mmzmo.mongodb.net/plantprojectfirstdeployment') + "?retryWrites=false"
 
+#app.config["MONGO_URI"] = "mongodb://127.0.0.1:27017/plantprojectfirstdeployment"
 app.config["MONGO_URI"] = host
 mongo = PyMongo(app)
 
