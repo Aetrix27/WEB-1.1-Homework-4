@@ -26,4 +26,8 @@ ENV FLASK_ENV=development
 EXPOSE 5000
 
 # STEP 7: Run Flask!
-CMD ["flask", "run", "--host=0.0.0.0"]
+# Launch the wait tool, then your application.
+# Source: https://dev.to/hugodias/wait-for-mongodb-to-start-on-docker-3h8b
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait /wait
+RUN chmod +x /wait
+CMD /wait && ["flask", "run", "--host=0.0.0.0"]
