@@ -5,6 +5,8 @@ services:
     image: mongo
     volumes:
       - ./data:/data/db
+    environment:
+      FLASK_ENV: development
     ports:
       - "27017:27017"
 
@@ -12,7 +14,7 @@ services:
     container_name: app
     build: .
     ports:
-      - "3000:3000"
+      - "5000:5000"
     links:
       - mongo
     depends_on:

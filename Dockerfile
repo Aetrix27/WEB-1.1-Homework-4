@@ -7,9 +7,10 @@
 FROM python:3.7-slim-buster
 
 # STEP 2: Install required dependencies.
-RUN pip install Flask flask_pymongo
+RUN pip install Flask
 RUN pip install dnspython
-RUN pip freeze > requirements.txt
+COPY requirements.txt /tmp/requirements.txt
+RUN python3 -m pip install -r /tmp/requirements.txt
 
 # STEP 3: Copy the source code in the current directory to the container.
 # Store it in a folder named /app.
@@ -27,7 +28,8 @@ EXPOSE 5000
 
 # STEP 7: Run Flask!
 # Launch the wait tool, then your application.
+
 # Source: https://dev.to/hugodias/wait-for-mongodb-to-start-on-docker-3h8b
-ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait /wait
-RUN chmod +x /wait
-CMD /wait && ["flask", "run", "--host=0.0.0.0"]
+#ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait /wait
+#RUN chmod +x /wait
+CMD ["flask", "run", "--host=0.0.0.0"]
